@@ -1,0 +1,29 @@
+cmake_minimum_required(VERSION 3.10)
+
+# Define project information
+project(CoffeeOrderingSystem VERSION 1.0)
+
+# Set C++17 standard (Required for modern C++ features)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# List all source files
+set(SOURCES
+    main.cpp
+    coffeeapp.cpp
+    coffeemenu.cpp
+    coffeeorderservice.cpp
+    coffee.cpp
+)
+
+# Create the executable
+add_executable(CoffeeApp ${SOURCES})
+
+# Increase warning levels to catch potential issues during compilation
+if(MSVC)
+    # Settings for Microsoft Visual C++ Compiler
+    target_compile_options(CoffeeApp PRIVATE /W4)
+else()
+    # Settings for GCC and Clang (MinGW uses these)
+    target_compile_options(CoffeeApp PRIVATE -Wall -Wextra -Wpedantic)
+endif()
